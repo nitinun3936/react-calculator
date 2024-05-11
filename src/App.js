@@ -1,11 +1,11 @@
 import React from 'react';
-import CalculatorComponent from './CalculatorComponent';
-import './App.css';  // Make sure you import your CSS for styling
+import Calculator from './Calculator';
+import './App.css'; // Assuming you have some basic styling in App.css
 
 function App() {
   return (
     <div className="App">
-      <CalculatorComponent />
+      <Calculator />
     </div>
   );
 }
