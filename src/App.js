@@ -14,7 +14,8 @@ function App() {
 
   const handleCalculate = () => {
     try {
-      setInput(eval(input).toString());
+      const result = eval(input);
+      setInput(result.toString());
     } catch (error) {
       setInput('Error');
     }
