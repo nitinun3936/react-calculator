@@ -1,47 +1,29 @@
 import React, { useState } from 'react';
+import CalculatorComponent from './CalculatorComponent';
 
 const Calculator = () => {
   const [input, setInput] = useState('');
 
   const handleClick = (value) => {
-    setInput(input + value);
-  };
-
-  const calculateResult = () => {
-    try {
-      setInput(eval(input).toString());
-    } catch (e) {
-      setInput("Error");
+    if (value === 'C') {
+      setInput('');
+    } else if (value === '=') {
+      try {
+        setInput(eval(input).toString());
+      } catch (e) {
+        setInput('Error');
+      }
+    } else {
+      setInput(input + value);
     }
-  };
-
-  const clearInput = () => {
-    setInput('');
   };
 
   return (
     <div className="calculator">
-      <div className="display">{input}</div>
-      <div className="keypad">
-        <button onClick={() => handleClick('7')}>7</button>
-        <button onClick={() => handleClick('8')}>8</button>
-        <button onClick={() => handleClick('9')}>9</button>
-        <button onClick={() => handleClick('/')}>/</button>
-        <button onClick={() => handleClick('4')}>4</button>
-        <button onClick={() => handleClick('5')}>5</button>
-        <button onClick={() => handleClick('6')}>6</button>
-        <button onClick={() => handleClick('*')}>*</button>
-        <button onClick={() => handleClick('1')}>1</button>
-        <button onClick={() => handleClick('2')}>2</button>
-        <button onClick={() => handleClick('3')}>3</button>
-        <button onClick={() => handleClick('-')}>-</button>
-        <button onClick={clearInput}>C</button>
-        <button onClick={() => handleClick('0')}>0</button>
-        <button onClick={calculateResult}>=</button>
-        <button onClick={() => handleClick('+')}>+</button>
-      </div>
+      <input type="text" value={input} readOnly className="display" />
+      <CalculatorComponent handleClick={handleClick} />
     </div>
   );
-};
+}
 
 export default Calculator;
