@@ -1,38 +1,11 @@
-import React, { useState } from 'react';
-import Button from './Button';
-import './CalculatorComponent.css';
+import React from 'react';
 
-const CalculatorComponent = () => {
-  const [input, setInput] = useState('');
-
-  const addToInput = val => {
-    setInput(input + val);
-  };
-
-  const clearInput = () => {
-    setInput('');
-  };
-
-  const calculateResult = () => {
-    try {
-      setInput(eval(input).toString());
-    } catch (e) {
-      setInput("Error");
-    }
-  };
-
+function CalculatorButton({ value, onClick }) {
   return (
-    <div className="calculator">
-      <div className="display">{input || "0"}</div>
-      <div className="keypad">
-        {['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', 'C', '0', '=', '+'].map(key => (
-          <Button key={key} onClick={() => key === 'C' ? clearInput() : key === '=' ? calculateResult() : addToInput(key)}>
-            {key}
-          </Button>
-        ))}
-      </div>
-    </div>
+    <button onClick={() => onClick(value)}>
+      {value}
+    </button>
   );
-};
+}
 
-export default CalculatorComponent;
+export default CalculatorButton;
