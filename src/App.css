@@ -7,8 +7,8 @@
   margin-top: 20px;
 }
 
-input[type="text"] {
-  width: 208px; /* Adjust as needed for 4 buttons across */
+input[type="text"], .result {
+  width: 210px; /* Ensure it matches button grid width */
   height: 40px;
   margin-bottom: 5px;
   font-size: 20px;
@@ -16,9 +16,15 @@ input[type="text"] {
   padding: 5px;
 }
 
+.result {
+  font-size: 18px;
+  color: gray;
+  border: 1px solid #ccc; /* Visual distinction for result display */
+}
+
 .keypad {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Creates a grid with 4 columns */
+  grid-template-columns: repeat(4, 50px);
   gap: 5px;
 }
 

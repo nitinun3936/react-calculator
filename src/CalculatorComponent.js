@@ -1,9 +1,9 @@
 import React from 'react';
 
-function CalculatorButton({ value, onClick }) {
+function CalculatorButton({ label, onClick }) {
   return (
-    <button onClick={() => onClick(value)}>
-      {value}
+    <button onClick={() => onClick(label)}>
+      {label}
     </button>
   );
 }

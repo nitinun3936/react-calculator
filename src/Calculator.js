@@ -1,8 +1,14 @@
-function calculate(input) {
+function calculate(expression) {
   try {
-    return eval(input).toString();
+    const result = eval(expression);
+    if (Number.isNaN(result)) {
+      return 'NaN'; // Division by zero will yield NaN
+    } else if (!Number.isFinite(result)) {
+      return 'Infinity'; // Division of a number by zero
+    }
+    return result.toString();
   } catch (error) {
-    return 'Error';
+    return 'Error'; // Handle incomplete expressions or any other errors
   }
 }
 
