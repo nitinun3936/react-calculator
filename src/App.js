@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import calculate from './Calculator';
 import CalculatorButton from './CalculatorComponent';
 
 function App() {
@@ -9,14 +8,24 @@ function App() {
 
   const handleInput = (value) => {
     if (value === '=') {
-      const output = calculate(input);
-      setResult(output);
-      setInput('');
+      handleCalculate();
     } else if (value === 'C') {
       setInput('');
       setResult('');
     } else {
       setInput(input + value);
+    }
+  };
+
+  const handleCalculate = () => {
+    try {
+      const output = eval(input);
+      if (Number.isNaN(output) || !Number.isFinite(output)) {
+        throw new Error("Invalid expression");
+      }
+      setResult(output.toString());
+    } catch (error) {
+      setResult('Error');
     }
   };
 
