@@ -14,10 +14,21 @@ function App() {
 
   const handleCalculate = () => {
     try {
+      // Handling division by zero and zero by zero specifically
+      if (input.includes('/0')) {
+        const checkZeroDivision = input.split('/').map(s => s.trim());
+        if (checkZeroDivision[1] === '0') {
+          setInput('Infinity');
+          return;
+        } else if (input === '0/0') {
+          setInput('NaN');
+          return;
+        }
+      }
       const result = eval(input);
       setInput(result.toString());
     } catch (error) {
-      setInput('Error');
+      setInput('Error'); // Handles incomplete expressions and other errors
     }
   };
 
