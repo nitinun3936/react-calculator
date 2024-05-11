@@ -1,13 +1,11 @@
 import React from 'react';
-import './App.css';
 import CalculatorComponent from './CalculatorComponent';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <CalculatorComponent />
-      </header>
+      <CalculatorComponent />
     </div>
   );
 }

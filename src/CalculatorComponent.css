@@ -1,0 +1,27 @@
+.calculator {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  .display {
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: calc(50px * 4 - 10px); /* Matches the button grid width */
+    margin-bottom: 5px;
+    text-align: right;
+  }
+  
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    gap: 5px;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
