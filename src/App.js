@@ -20,12 +20,17 @@ function App() {
   const handleCalculate = () => {
     try {
       const output = eval(input);
-      if (Number.isNaN(output) || !Number.isFinite(output)) {
-        throw new Error("Invalid expression");
+      if (output === Infinity) {
+        setResult('Infinity');  // Handle division by zero
+      } else if (Number.isNaN(output)) {
+        setResult('NaN');  // Handle zero divided by zero
+      } else if (!Number.isFinite(output)) {
+        throw new Error("Invalid expression"); // Catch other invalid cases like overflow
+      } else {
+        setResult(output.toString());
       }
-      setResult(output.toString());
     } catch (error) {
-      setResult('Error');
+      setResult('Error');  // Catch syntax errors and other exceptions
     }
   };
 
