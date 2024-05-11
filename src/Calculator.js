@@ -1,29 +1,24 @@
-import React, { useState } from 'react';
-import CalculatorComponent from './CalculatorComponent';
+import React from 'react';
+import Button from './Button';  // If you have a Button component
 
-const Calculator = () => {
-  const [input, setInput] = useState('');
-
-  const handleClick = (value) => {
-    if (value === 'C') {
-      setInput('');
-    } else if (value === '=') {
-      try {
-        setInput(eval(input).toString());
-      } catch (e) {
-        setInput('Error');
-      }
-    } else {
-      setInput(input + value);
-    }
-  };
+const Calculator = ({ input, onButtonPress }) => {
+  const buttons = [
+    '7', '8', '9', '+',
+    '4', '5', '6', '-',
+    '1', '2', '3', '*',
+    'C', '0', '=', '/'
+  ];
 
   return (
-    <div className="calculator">
-      <input type="text" value={input} readOnly className="display" />
-      <CalculatorComponent handleClick={handleClick} />
+    <div>
+      <div className="screen">{input}</div>
+      <div className="button-grid">
+        {buttons.map((label, index) => (
+          <Button key={index} label={label} onClick={() => onButtonPress(label)} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default Calculator;

@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Calculator from './Calculator'; // Assuming this is the layout and logic handler
 
-const CalculatorComponent = ({ handleClick }) => {
-  const buttons = [
-    ['7', '8', '9', '+'],
-    ['4', '5', '6', '-'],
-    ['1', '2', '3', '*'],
-    ['C', '0', '=', '/']
-  ];
+function CalculatorComponent() {
+  const [input, setInput] = useState("");
+
+  const handleInput = (value) => {
+    // Handle different inputs like numbers, operations, etc.
+    if (value === 'C') {
+      setInput("");
+    } else if (value === '=') {
+      try {
+        setInput(eval(input).toString());
+      } catch (error) {
+        setInput("Error");
+      }
+    } else {
+      setInput(input + value);
+    }
+  };
 
   return (
     <div>
-      {buttons.map((row, idx) => (
-        <div key={idx} className="button-row">
-          {row.map((button) => (
-            <button key={button} onClick={() => handleClick(button)} className="button">
-              {button}
-            </button>
-          ))}
-        </div>
-      ))}
+      <Calculator input={input} onButtonPress={handleInput} />
     </div>
   );
 }
